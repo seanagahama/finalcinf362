@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Submit a Review | Game & Tech Insider</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Game & Tech Insider</h1>
+    <nav>
+      <ul class="main-menu">
+        <li><a href="games.html">Gaming</a></li>
+        <li><a href="consoles.html">Consoles</a></li>
+        <li><a href="tech.html">Tech Gadgets</a></li>
+        <li><a href="#">Upcoming Releases</a></li>
+        <li><a href="review.html">Reviews</a></li> <!-- New review tab link -->
+      </ul>
+    </nav>
+  </header>
+
+  <main class="content">
+    <a href="index.html" class="back-home">← Back to Homepage</a>
+    
+    <div class="page-header">
+      <h2>Submit a Review</h2>
+      <p>We'd love to hear your thoughts on the latest gadgets and tech!</p>
+    </div>
+
+    <section class="review-form-section">
+      <form action="submit_review.php" method="POST">
+        <label for="product_name">Product Name:</label>
+        <input type="text" id="product_name" name="product_name" required>
+
+        <label for="rating">Rating:</label>
+        <select id="rating" name="rating" required>
+          <option value="1">1 Star</option>
+          <option value="2">2 Stars</option>
+          <option value="3">3 Stars</option>
+          <option value="4">4 Stars</option>
+          <option value="5">5 Stars</option>
+        </select>
+
+        <label for="review">Review:</label>
+        <textarea id="review" name="review" rows="5" required></textarea>
+
+        <button type="submit">Submit Review</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <section class="about-us">
+      <h2>About Us</h2>
+      <p>
+        Game & Tech Insider delivers cutting-edge news, honest reviews, and fresh updates on gaming consoles,
+        tech gadgets, and release calendars. We're here to keep gamers and tech lovers in the loop.
+      </p>
+    </section>
+  </footer>
+</body>
+</html>

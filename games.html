@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Game & Tech Insider | Gaming Hub</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Game & Tech Insider</h1>
+    <nav>
+      <ul class="main-menu">
+        <li>
+          <a href="games.html">Gaming</a>
+          <ul class="dropdown">
+            <li><a href="#">PC Games</a></li>
+            <li><a href="#">Mobile Games</a></li>
+            <li><a href="#">eSports</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="consoles.html">Consoles</a>
+          <ul class="dropdown">
+            <li><a href="#">PlayStation</a></li>
+            <li><a href="#">Xbox</a></li>
+            <li><a href="#">Nintendo</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="tech.html">Tech Gadgets</a>
+          <ul class="dropdown">
+            <li><a href="#">Smartphones</a></li>
+            <li><a href="#">Wearables</a></li>
+            <li><a href="#">Accessories</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Upcoming Releases</a>
+          <ul class="dropdown">
+            <li><a href="#">Games</a></li>
+            <li><a href="#">Consoles</a></li>
+            <li><a href="#">Gadgets</a></li>
+          </ul>
+        </li>
+        <!-- Added Reviews tab -->
+        <li>
+          <a href="review.html">Reviews</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="content">
+    <a href="index.html" class="back-home">← Back to Homepage</a>
+    
+    <div class="page-header">
+      <h2>Gaming Hub</h2>
+      <p>The latest news, reviews, and updates from the world of gaming</p>
+    </div>
+
+    <!-- Feature Section where games will be dynamically loaded -->
+    <section id="game-list" class="feature-section">
+      <!-- Game features will be inserted here via JavaScript -->
+    </section>
+  </main>
+
+  <footer>
+    <section class="about-us">
+      <h2>About Us</h2>
+      <p>
+        Game & Tech Insider delivers cutting-edge news, honest reviews, and fresh updates on gaming consoles,
+        tech gadgets, and release calendars. We're here to keep gamers and tech lovers in the loop.
+      </p>
+    </section>
+  </footer>
+
+  <script>
+    // Function to fetch the games from the PHP API
+    async function fetchGames() {
+      try {
+        const response = await fetch('https://techinsider.free.nf/api/games_api.php');
+        const games = await response.json(); 
+
+        if (Array.isArray(games)) {
+          const gameList = document.getElementById('game-list');
+
+          // Clear the existing game list
+          gameList.innerHTML = '';
+
+          // Loop through the fetched games and create HTML elements for each one
+          games.forEach(game => {
+            const gameItem = document.createElement('div');
+            gameItem.classList.add('feature');
+            
+            // Add game image, title, and description
+            gameItem.innerHTML = `
+              <img src="${game.image_url}" alt="${game.title}">
+              <h3>${game.title}</h3>
+              <p>${game.description}</p>
+            `;
+
+            // Append each game to the feature section
+            gameList.appendChild(gameItem);
+          });
+        } else {
+          console.error('Error: Invalid game data received.');
+        }
+      } catch (error) {
+        console.error('Error fetching the games:', error);
+      }
+    }
+
+    // Call the function to fetch the games when the page loads
+    fetchGames();
+  </script>
+</body>
+</html>

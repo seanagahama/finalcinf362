@@ -1,0 +1,238 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fffaf0;
+  color: #111;
+}
+
+/* Header Styles */
+header {
+  background-color: #000;
+  color: white;
+  padding: 20px;
+}
+
+header h1 {
+  margin-bottom: 10px;
+  font-size: 28px;
+  text-align: center;
+  color: #ff0000;
+}
+
+/* Navigation Styles */
+nav {
+  display: flex;
+  justify-content: center;
+}
+
+.main-menu {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.main-menu > li {
+  position: relative;
+}
+
+.main-menu > li > a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 15px;
+  display: block;
+}
+
+.main-menu > li:hover > a {
+  background-color: #ff0000;
+  border-radius: 5px;
+}
+
+/* Dropdown Menu Styles */
+.dropdown {
+  display: none;
+  position: absolute;
+  background-color: #111;
+  padding: 10px 0;
+  list-style: none;
+  top: 100%;
+  left: 0;
+  min-width: 160px;
+  z-index: 1000;
+  border-radius: 0 0 5px 5px;
+}
+
+.dropdown li a {
+  display: block;
+  padding: 10px 15px;
+  color: white;
+  text-decoration: none;
+}
+
+.dropdown li a:hover {
+  background-color: #ff0000;
+}
+
+.main-menu > li:hover .dropdown {
+  display: block;
+}
+
+/* Main Content Styles */
+main {
+  padding: 20px;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.page-header h2 {
+  color: #c10000;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+/* Feature Section Styles */
+.feature-section {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.feature {
+  flex: 1;
+  min-width: 250px;
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.feature:hover {
+  transform: scale(1.02);
+}
+
+.feature h3 {
+  color: #c10000;
+  margin-bottom: 10px;
+}
+
+.feature img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* Review Form Styles */
+.review-form-section form {
+  display: grid;
+  gap: 20px;
+}
+
+label {
+  font-size: 16px;
+  color: #333;
+}
+
+input[type="text"], select, textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+button {
+  padding: 12px 20px;
+  font-size: 16px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Back to Home Link */
+.back-home {
+  display: block;
+  text-align: center;
+  margin: 20px 0;
+  color: #c10000;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.back-home:hover {
+  text-decoration: underline;
+}
+
+/* Footer Styles */
+footer {
+  background-color: #000;
+  color: white;
+  text-align: center;
+  padding: 25px 20px;
+}
+
+footer h2 {
+  color: #ff0000;
+  margin-bottom: 10px;
+}
+
+footer p {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+  nav {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .main-menu {
+      flex-direction: column;
+      gap: 10px;
+  }
+
+  .main-menu > li {
+      width: 100%;
+      text-align: center;
+  }
+
+  .dropdown {
+      position: static;
+      display: none;
+      width: 100%;
+  }
+
+  .main-menu > li.active .dropdown {
+      display: block;
+  }
+
+  .feature-section {
+      flex-direction: column;
+  }
+}

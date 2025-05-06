@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Game & Tech Insider</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Game & Tech Insider</h1>
+    <nav>
+      <ul class="main-menu">
+        <li>
+          <a href="games.html">Gaming</a>
+          <ul class="dropdown">
+            <li><a href="">PC Games</a></li>
+            <li><a href="#">Mobile Games</a></li>
+            <li><a href="#">eSports</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="consoles.html">Consoles</a>
+          <ul class="dropdown">
+            <li><a href="#">PlayStation</a></li>
+            <li><a href="#">Xbox</a></li>
+            <li><a href="#">Nintendo</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="tech.html">Tech Gadgets</a>
+          <ul class="dropdown">
+            <li><a href="#">Smartphones</a></li>
+            <li><a href="#">Wearables</a></li>
+            <li><a href="#">Accessories</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Upcoming Releases</a>
+          <ul class="dropdown">
+            <li><a href="#">Games</a></li>
+            <li><a href="#">Consoles</a></li>
+            <li><a href="#">Gadgets</a></li>
+          </ul>
+        </li>
+        <!-- New Reviews Tab -->
+        <li>
+          <a href="review.html">Reviews</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="content">
+    <section class="feature-section">
+      <!-- FEATURE 1 -->
+      <div class="feature">
+        <h3>Console Wars</h3>
+        <img src="https://placehold.co/300x200" alt="Gaming Console">
+        <p>Discover the latest showdowns between PlayStation, Xbox, and Nintendo.</p>
+      </div>
+
+      <!-- FEATURE 2 -->
+      <div class="feature">
+        <h3>Tech on the Rise</h3>
+        <img src="https://placehold.co/300x200" alt="Tech Gadget">
+        <p>Explore the hottest tech gadgets revolutionizing daily life.</p>
+      </div>
+
+      <!-- FEATURE 3 -->
+      <div class="feature">
+        <h3>Release Radar</h3>
+        <img src="https://placehold.co/300x200" alt="Upcoming Releases">
+        <p>Stay ahead with sneak peeks at the most anticipated launches.</p>
+        <p id="countdown" style="font-weight: bold; color: #c10000;"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <section class="about-us">
+      <h2>About Us</h2>
+      <p>
+        Game & Tech Insider delivers cutting-edge news, honest reviews, and fresh updates on gaming consoles,
+        tech gadgets, and release calendars. We're here to keep gamers and tech lovers in the loop.
+      </p>
+    </section>
+  </footer>
+
+  <!-- JavaScript Section -->
+  <script>
+  // Mobile Dropdown Menu Toggle
+  document.querySelectorAll('.main-menu > li > a').forEach(link => {
+    link.addEventListener('click', function (e) {
+      const parent = this.parentElement;
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        parent.classList.toggle('active');
+      }
+    });
+  });
+
+  // Countdown Timer for a release (e.g., Dec 1, 2025)
+  const releaseDate = new Date('2025-12-01T00:00:00');
+  const countdownEl = document.getElementById('countdown');
+
+  function updateCountdown() {
+    const now = new Date();
+    const diff = releaseDate - now;
+
+    if (diff <= 0) {
+      countdownEl.textContent = 'Released!';
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    countdownEl.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s until release!`;
+  }
+
+  updateCountdown(); // Run once immediately
+  setInterval(updateCountdown, 1000); // Update every second
+</script>
+
+</body>
+</html>
